@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { useRouter } from 'expo-router'; // Correção da importação do hook router
+import { useRouter } from 'expo-router'; 
 import axios from 'axios';
 
 interface UserData {
@@ -15,22 +15,22 @@ const SignupScreen: React.FC = () => {
   const [birthday, setBirthday] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const router = useRouter(); // Correção do uso do router
+  const router = useRouter(); 
 
-  // Função para validar os dados
+  
   const validate = (): boolean => {
     if (!name || !birthday || !email || !password) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return false;
     }
-    // Você pode adicionar mais validações se necessário
+    
     return true;
   };
 
   const handleSignup = () => {
     console.log('Nome:', name, 'Data de Nascimento:', birthday, 'Email:', email, 'Senha:', password);
     
-    // Validação dos dados
+    
     if (!validate()) return;
 
     const userData: UserData = {
@@ -46,7 +46,7 @@ const SignupScreen: React.FC = () => {
         console.log(res.data);
         if (res.data.status === 'ok') {
           Alert.alert('Sucesso', 'Registrado com sucesso!');
-          router.replace('/'); // Redireciona para a página inicial
+          router.replace('/'); 
         } else {
           Alert.alert('Erro', JSON.stringify(res.data));
         }
