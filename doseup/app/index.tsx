@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
-import { useRouter } from 'expo-router'; // Correção para 'useRouter'
+import { useRouter } from 'expo-router'; 
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
-  const [email, setEmail] = useState(''); // State for email
-  const [password, setPassword] = useState(''); // State for password
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // State for login status
-  const router = useRouter(); // Correção para usar useRouter no lugar de router direto
+  const [email, setEmail] = useState(''); 
+  const [password, setPassword] = useState(''); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const router = useRouter(); 
 
-  // Função para verificar se o usuário já está logado
+  
   const getData = async () => {
     const data = await AsyncStorage.getItem('isLoggedIn');
     if (data === 'true') {
@@ -18,10 +18,10 @@ const LoginScreen = () => {
     }
   };
 
-  // Executa apenas uma vez ao montar o componente
+  
   useEffect(() => {
     getData();
-  }, []); // Adicionado array de dependências vazio
+  }, []); 
 
   const handleSubmit = async () => {
     console.log(email, password);
@@ -47,7 +47,7 @@ const LoginScreen = () => {
     }
   };
 
-  // Se já estiver logado, redireciona para o arquivo "blabla"
+  
   if (isLoggedIn) {
     router.replace("/blabla");
     return null;
@@ -62,7 +62,7 @@ const LoginScreen = () => {
           style={styles.input}
           placeholder="exemplo@gmail.com"
           value={email}
-          onChangeText={setEmail} // Mantém o valor do e-mail atualizado
+          onChangeText={setEmail} 
         />
         <Text style={styles.label}>Senha:</Text>
         <TextInput
@@ -70,7 +70,7 @@ const LoginScreen = () => {
           placeholder="sua senha..."
           secureTextEntry
           value={password}
-          onChangeText={setPassword} // Mantém o valor da senha atualizado
+          onChangeText={setPassword} 
         />
       </View>
       <TouchableOpacity>
